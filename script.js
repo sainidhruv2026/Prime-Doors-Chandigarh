@@ -43,34 +43,40 @@ document.querySelectorAll("a[href^='#']").forEach(anchor => {
 });
 const slides = document.querySelectorAll(".slide");
 
-let currentSlide = 0;
+if(slides.length > 0){
 
-setInterval(() => {
+    let currentSlide = 0;
 
-    slides[currentSlide].classList.remove("active");
+    setInterval(() => {
 
-    currentSlide++;
+        slides[currentSlide].classList.remove("active");
 
-    if(currentSlide >= slides.length){
-        currentSlide = 0;
-    }
+        currentSlide++;
 
-    slides[currentSlide].classList.add("active");
+        if(currentSlide >= slides.length){
+            currentSlide = 0;
+        }
 
-}, 5000);
+        slides[currentSlide].classList.add("active");
+
+    }, 5000);
+
+}
 window.addEventListener("load", () => {
 
     const loader = document.getElementById("door-loader");
 
-    // 0.5 sec baad door open hona start
-    setTimeout(() => {
-        loader.classList.add("open");
-    }, 500);
+    if(loader){
 
-    // Total 3 sec me loader remove
-    setTimeout(() => {
-        loader.style.display = "none";
-    }, 3000);
+        setTimeout(() => {
+            loader.classList.add("open");
+        }, 500);
+
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 3000);
+
+    }
 
 });
 window.addEventListener("scroll", function(){
@@ -86,7 +92,46 @@ window.addEventListener("scroll", function(){
 });
 const doorCursor = document.getElementById("doorCursor");
 
-document.addEventListener("mousemove", (e)=>{
-    doorCursor.style.left = e.clientX + "px";
-    doorCursor.style.top = e.clientY + "px";
-});
+if(doorCursor){
+    document.addEventListener("mousemove", (e)=>{
+        doorCursor.style.left = e.clientX + "px";
+        doorCursor.style.top = e.clientY + "px";
+    });
+}
+const inquiryForm = document.getElementById("inquiryForm");
+
+if(inquiryForm){
+
+    inquiryForm.addEventListener("submit", function(e){
+
+        e.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let phone = document.getElementById("phone").value;
+        let project = document.getElementById("project").value;
+        let message = document.getElementById("message").value;
+
+        let whatsappNumber = "918901295560";
+
+        let text =
+`🏠 PRIME DOORS CHANDIGARH
+
+📌 NEW INQUIRY
+
+👤 Name: ${name}
+
+📞 Phone: ${phone}
+
+🚪 Project Type: ${project}
+
+📝 Message:
+${message}`;
+
+        let url =
+`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+
+        window.open(url, "_blank");
+
+    });
+
+}
