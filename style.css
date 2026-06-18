@@ -90,21 +90,25 @@ button,input,textarea{font:inherit}
     position:fixed;
     top:0;
     left:0;
-    right:0;
-    z-index:1000;
+    width:100%;
+    z-index:9999;
 
-    background:lab(99.73% 0.33 0.11 / 0.662);
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
+    background:transparent;
+    border-bottom:1px solid rgba(255,255,255,0.08);
 
-    border-bottom:1px solid rgba(255,255,255,0.1);
-    box-shadow:none;
+    transition:all .4s ease;
 }
 
 .site-header.scrolled{
-    background:rgba(255,255,255,0.12);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
+    background:rgba(0,0,0,0.92);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border-bottom:1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.45);
 }
 
 .navbar{
@@ -123,11 +127,12 @@ button,input,textarea{font:inherit}
   font-size:20px;
   letter-spacing:.16em;
   text-transform:uppercase;
+  color:#fff;
 }
 .brand span{
   font-size:11px;
   letter-spacing:.28em;
-  color:var(--gold);
+  color:#fff;
   margin-top:4px;
 }
 .nav-links{
@@ -138,7 +143,7 @@ button,input,textarea{font:inherit}
 .nav-links a{
   font-size:14px;
   font-weight:500;
-  color:#000000f8;
+  color:#ffffff;
   position:relative;
   padding:8px 0;
 }
@@ -781,108 +786,6 @@ form{
     );
 }
 
-#door-loader{
-    position:fixed;
-    inset:0;
-    z-index:999999;
-    background:#111;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    perspective:2000px;
-}
-
-.door-frame{
-    position:relative;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-}
-
-.door-panel{
-    position:absolute;
-    top:0;
-    width:50%;
-    height:100%;
-    background:
-    linear-gradient(
-        90deg,
-        #4a2a16,
-        #6b3f21,
-        #8c5a30,
-        #6b3f21
-    );
-    border:2px solid rgba(0,0,0,.4);
-}
-
-.left-panel{
-    left:0;
-    transform-origin:left center;
-}
-
-.right-panel{
-    right:0;
-    transform-origin:right center;
-}
-
-.door-handle{
-    position:absolute;
-    width:12px;
-    height:80px;
-    background:#d8b57a;
-    top:50%;
-    transform:translateY(-50%);
-    border-radius:10px;
-}
-
-.left-panel .door-handle{
-    right:30px;
-}
-
-.right-panel .door-handle{
-    left:30px;
-}
-
-.door-brand{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    text-align:center;
-    color:white;
-    z-index:10;
-}
-
-.door-brand h1{
-    font-size:70px;
-    letter-spacing:8px;
-    margin:0;
-}
-
-.door-brand span{
-    color:#d8b57a;
-    letter-spacing:6px;
-}
-
-.open .left-panel{
-    animation:openLeftDoor 2.2s forwards ease-in-out;
-}
-
-.open .right-panel{
-    animation:openRightDoor 2.2s forwards ease-in-out;
-}
-
-@keyframes openLeftDoor{
-    to{
-        transform:rotateY(-105deg);
-    }
-}
-
-@keyframes openRightDoor{
-    to{
-        transform:rotateY(105deg);
-    }
-}
 body{
     cursor:none;
 }
@@ -1099,4 +1002,259 @@ img{
         display:none !important;
     }
 }
- 
+ /* PREMIUM LUXURY LOADER */
+
+#door-loader{
+    position:fixed;
+    inset:0;
+    background:#0b0b0b;
+    z-index:999999;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.loader-overlay{
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(
+        circle at center,
+        rgba(184,138,74,.25),
+        transparent 60%
+    );
+}
+
+.loader-logo{
+    position:absolute;
+    z-index:20;
+    text-align:center;
+}
+
+.loader-logo h1{
+    color:#fff;
+    font-size:90px;
+    letter-spacing:12px;
+    font-family:'Cormorant Garamond', serif;
+    animation:logoFade 1.5s ease forwards;
+}
+
+.loader-logo span{
+    display:block;
+    margin-top:10px;
+    color:#d8b57a;
+    letter-spacing:8px;
+    font-size:15px;
+}
+
+.loader-door{
+    position:absolute;
+    top:0;
+    width:50%;
+    height:100%;
+    background:#111;
+}
+
+.loader-left{
+    left:0;
+}
+
+.loader-right{
+    right:0;
+}
+
+.open .loader-left{
+    animation:luxLeft 1.8s forwards ease-in-out;
+}
+
+.open .loader-right{
+    animation:luxRight 1.8s forwards ease-in-out;
+}
+
+@keyframes luxLeft{
+    100%{
+        transform:translateX(-100%);
+    }
+}
+
+@keyframes luxRight{
+    100%{
+        transform:translateX(100%);
+    }
+}
+
+@keyframes logoFade{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:768px){
+
+    .loader-logo h1{
+        font-size:42px;
+        letter-spacing:5px;
+    }
+
+    .loader-logo span{
+        font-size:11px;
+        letter-spacing:4px;
+    }
+
+}
+/* ===== EXACT LUXURY HERO ===== */
+
+.hero{
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        90deg,
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.25),
+        rgba(0,0,0,.55)
+    );
+    z-index:1;
+}
+
+.hero-inner{
+    position:relative;
+    z-index:2;
+    width:90%;
+    max-width:1500px;
+    margin:auto;
+    height:100%;
+}
+
+.luxury-top{
+    position:absolute;
+    top:110px;
+    left:0;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.door-logo{
+    width:35px;
+    height:50px;
+    border:1px solid rgba(255,255,255,.7);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.logo-area h3{
+    color:white;
+    font-size:30px;
+    letter-spacing:6px;
+    font-weight:400;
+}
+
+.logo-area p{
+    color:white;
+    letter-spacing:4px;
+    font-size:12px;
+    margin-top:8px;
+}
+
+.hero-content{
+    position:absolute;
+    left:70px;
+    top:55%;
+    transform:translateY(-50%);
+}
+
+.luxury-title{
+    font-family:'Cormorant Garamond',serif;
+    color:white;
+    font-size:150px;
+    line-height:.8;
+}
+
+.luxury-title span{
+    display:block;
+    color:#a56a45;
+    font-style:italic;
+}
+
+.luxury-desc{
+    color:white;
+    max-width:700px;
+    font-size:22px;
+    line-height:1.8;
+    margin-top:40px;
+}
+
+.luxury-buttons{
+    display:flex;
+    gap:15px;
+    margin-top:40px;
+}
+
+.lux-btn{
+    padding:18px 40px;
+    letter-spacing:3px;
+    font-size:13px;
+}
+
+.lux-btn.light{
+    background:white;
+    color:black;
+}
+
+.lux-btn.dark{
+    border:1px solid rgba(255,255,255,.4);
+    color:white;
+}
+
+.scroll-text{
+    position:absolute;
+    bottom:60px;
+    left:50%;
+    transform:translateX(-50%);
+    color:white;
+    letter-spacing:5px;
+}
+
+.floating-buttons{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    z-index:99999;
+}
+
+.floating-whatsapp{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#25D366;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+

@@ -70,11 +70,16 @@ window.addEventListener("load", () => {
 
         setTimeout(() => {
             loader.classList.add("open");
-        }, 500);
+        }, 1200);
 
         setTimeout(() => {
-            loader.style.display = "none";
-        }, 3000);
+            loader.style.opacity = "0";
+            loader.style.transition = "0.8s";
+        }, 2800);
+
+        setTimeout(() => {
+            loader.remove();
+        }, 3600);
 
     }
 
