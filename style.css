@@ -1301,3 +1301,91 @@ form{
     font-size:14px;
   }
 }
+@media (max-width:768px){
+
+    .nav-cta{
+        gap:8px;
+    }
+
+    .nav-cta .btn{
+        padding:10px 16px !important;
+        font-size:13px !important;
+        width:auto !important;
+    }
+}
+/* ===== MOBILE OVERFLOW FIX ===== */
+
+html,
+body{
+    overflow-x:hidden !important;
+    max-width:100%;
+}
+
+.hero,
+.hero-inner,
+.hero-content,
+.hero-card,
+.container{
+    max-width:100%;
+}
+
+@media (max-width:768px){
+
+    .hero-inner{
+        width:100% !important;
+        padding-left:20px;
+        padding-right:20px;
+        padding-top:120px;
+        overflow:hidden;
+    }
+
+    .hero-content{
+        position:relative !important;
+        left:auto !important;
+        top:auto !important;
+        transform:none !important;
+        width:100%;
+    }
+
+    .luxury-title{
+        font-size:52px !important;
+        line-height:1 !important;
+        word-break:break-word;
+    }
+
+    .luxury-desc{
+        font-size:16px !important;
+        max-width:100% !important;
+        margin-top:20px;
+    }
+
+    .hero-card{
+        position:relative !important;
+        width:100% !important;
+        max-width:100% !important;
+        right:auto !important;
+        left:auto !important;
+        top:auto !important;
+        transform:none !important;
+        margin-top:25px;
+    }
+
+    .luxury-buttons{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .luxury-buttons .btn,
+    .luxury-buttons .lux-btn{
+        width:100%;
+    }
+
+    .marquee{
+        overflow:hidden;
+        width:100%;
+    }
+
+    .marquee-track{
+        width:max-content;
+    }
+}
