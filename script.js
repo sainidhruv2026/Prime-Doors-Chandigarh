@@ -116,7 +116,7 @@ if(inquiryForm){
         let project = document.getElementById("project").value;
         let message = document.getElementById("message").value;
 
-        let whatsappNumber = "918901295560";
+        let whatsappNumber = "919814202293";
 
         let text =
 `🏠 PRIME DOORS CHANDIGARH
